@@ -45,7 +45,7 @@ export const calledWithFn = <T extends FunctionLike>({
     const fn = jest.fn(fallbackMockImplementation);
     let calledWithStack: CalledWithStackItem<T>[] = [];
 
-    (fn as CalledWithMock<T>).calledWith = (...args) => {
+    (fn as unknown as CalledWithMock<T>).calledWith = (...args) => {
         // We create new function to delegate any interactions (mockReturnValue etc.) to for this set of args.
         // If that set of args is matched, we just call that jest.fn() for the result.
         const calledWithFn = jest.fn(fallbackMockImplementation);
@@ -61,7 +61,7 @@ export const calledWithFn = <T extends FunctionLike>({
         return calledWithFn;
     };
 
-    return fn as CalledWithMock<T>;
+    return fn as unknown as CalledWithMock<T>;
 };
 
 export default calledWithFn;
