@@ -14,6 +14,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
+    "preinstall": "prepare",
     "clean": "rimraf coverage lib",
     "test": "jest",
     "build": "tsc",
